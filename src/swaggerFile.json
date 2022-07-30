@@ -1,0 +1,13 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "Api Bubbledex",
+        "description": "Api da pokedex da bolha do twitter",
+        "version": "0.0.1",
+        "contact": {
+            "email": "serodiomg@gmail.com",
+            "name": "Pedro Serdio",
+            "url": "https://twitter.com/pedroserodio"
+        }
+    }
+}

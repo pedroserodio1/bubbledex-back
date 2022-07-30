@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Hability {
+  id              String            @id @default(uuid())
+  name            String
+  description     String
+  created_at      DateTime          @default(now())
+  updated_at      DateTime          @default(now())
+  Hability_person Hability_person[]
+}
+
+model Hability_person {
+  id         String   @id
+  personsId  String?
+  habilityId String
+  Hability   Hability @relation(fields: [habilityId], references: [id])
+  Persons    Persons? @relation(fields: [personsId], references: [id])
+}
+
+model Persons {
+  id              String            @id @default(uuid())
+  name            String
+  twitter_user    String
+  twitter_link    String
+  discord_name    String
+  anilist_mal     String?
+  picture         String?
+  description     String
+  link            String?
+  created_at      DateTime          @default(now())
+  updated_at      DateTime          @default(now())
+  Hability_person Hability_person[]
+}
+
