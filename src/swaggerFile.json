@@ -9,5 +9,124 @@
             "name": "Pedro Serdio",
             "url": "https://twitter.com/pedroserodio"
         }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333/api/v1",
+            "description": "Api em localhost"
+        }
+    ],
+    "paths": {
+        "/hability/":{
+            "get":{
+                "tags": [
+                    "Hability"
+                ],
+                "summary": "List all Habilitys",
+                "description": "Lit all habilitys in database",
+                "responses": {
+                    "200": {
+                        "description": "Sucsess",
+                        "content": {
+                            "aplication/json":{
+                                "schema":{
+                                    "type": "array",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "type": "string" 
+                                        }
+                                    }
+                                },
+                                "example":[
+                                    {
+                                        "id": "8e0a7e8d-f056-4cef-9b21-6cf98487d7c7",
+                                        "name": "Mitada",
+                                        "description": "Acha k-on peak fiction",
+                                        "created_at": "2022-07-30T15:10:37.640Z",
+                                        "updated_at": "2022-07-30T15:10:37.640Z"
+                                    },
+                                    {
+                                        "id": "16304590-603d-4c10-b578-69cd5da11a65",
+                                        "name": "Vortex do mal",
+                                        "description": "Cria um vortex que mata todo mundo",
+                                        "created_at": "2022-07-30T15:19:40.795Z",
+                                        "updated_at": "2022-07-30T15:19:40.795Z"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/hability/{id}":{
+            "get":{
+                "tags": [
+                    "Hability"
+                ],
+                "summary": "List Habilitys specified",
+                "description": "Lit hability with the id ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The id of Hability",
+                        "required": true,
+                        "schema":{
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucsess",
+                        "content": {
+                            "aplication/json":{
+                                "schema":{
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "updated_at": {
+                                            "type": "string" 
+                                        }
+                                    }
+                                },
+                                "example":{
+                                    "id": "8e0a7e8d-f056-4cef-9b21-6cf98487d7c7",
+		                            "name": "Mitada",
+		                            "description": "Acha k-on peak fiction",
+		                            "created_at": "2022-07-30T15:10:37.640Z",
+		                            "updated_at": "2022-07-30T15:10:37.640Z"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

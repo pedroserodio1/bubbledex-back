@@ -1,4 +1,5 @@
 //inportação de dependencia
+import 'reflect-metadata'
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors'
 import cors from 'cors'
@@ -22,11 +23,14 @@ dotenv.config()
 //instancia do express usando coisas
 app.use(express.json())
 app.use(cors())
-app.use(errors())
 
 //express usando rotas
 app.use('/api/v1', router)
 app.use('/api/v1/docs', SwaggerUi.serve, SwaggerUi.setup(swaggerFile))
+
+//erro do celebrate
+app.use(errors())
+
 
 //midlleware de erro
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -41,7 +45,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
     return res.status(500).json({
         status: 'error',
-        message: 'Internal server error'
+        message: 'Internal server error',
+        error: err.message
     })
 })
 
