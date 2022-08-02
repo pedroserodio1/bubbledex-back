@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import prisma from "@database/prismaClient";
 import { Persons, Hability } from "@prisma/client";
 import AppError from "@shared/AppError/AppError";
@@ -34,6 +35,9 @@ export default class ListPersonHabilityService{
                             Hability: true
                         }
                     }
+                },
+                orderBy: {
+                    created_at: 'asc'
                 }
             })
     
